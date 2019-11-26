@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html id="show" lang="en">
+  <head>
+
+    <%- include('head'); -%>
+    <style>
+    .center-div {
+        margin: 0 auto;
+        
+        /* margin: 50px 300px 50px 300px; */
+        width: 700px;
+          
+    }
+    </style>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <title>Movie Info</title> -->
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="/home" style="color: white;">Movie Review</a>
+  
+        <ul class="navbar-nav ml-auto">
+    
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: white;">humayan</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/logout"  style="color: teal">Logout</a>
+                  </div>
+                </li>
+                
+        </ul>
+          </nav>
+
+
+
+    <div class="container">
+      <div id="movie" class="well"></div>
+    </div>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+      getMovie();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head'); -%>
+    <style>
+    .center-div {
+        margin: 0 auto;
+        
+        /* margin: 50px 300px 50px 300px; */
+        width: 700px;
+         
+    }
+    </style>
+    
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/home" style="color: white;">Movie Review</a>
+
+  
+
+    <ul class="navbar-nav ml-auto">
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: white;"><%= username %></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/logout"  style="color: teal">Logout</a>
+              </div>
+            </li>
+            
+    </ul>
+    </nav>
+</body>
+</html>
+
+
