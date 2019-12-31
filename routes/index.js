@@ -123,8 +123,9 @@ router.get('/comments/:imdb_id', (req, res) => {
     if (err) throw err;
     
     const collection = client.db("movie-review").collection("comments");
-    collection.find(query).toArray((err, items) => {
+    collection.find(query).sort({timestamps:-1}).toArray((err, items) => {
       if(err) throw err;
+      console.log(items)
       res.render('comments', {
         items: items,
         title:"express",
@@ -146,6 +147,26 @@ router.post('/comments/:imdb_id', (req, res, next) => {
   var comment = req.body.comment;
   var id = req.params.imdb_id;
 
+  var d = new Date();
+  var date = d.getDate();
+  var month = d.getMonth();
+  var year = d.getFullYear();
+  var hour = d.getHours();
+  var minute = d.getMinutes();
+  var timestamps = d.getTime();
+
+  var datestr = String(date) + '/' + String(month) + '/' + String(year);
+  var timestr = String(hour) + " : " + String(minute);
+ 
+  var myobj2 = {
+    movieid: id,
+    username: username,
+    comment: comment,
+    currentDate: datestr,
+    currentTime: timestr,
+    timestamps: timestamps
+  };
+
   mongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {    
     if(err) throw err;
     var myobj = {
@@ -159,7 +180,7 @@ router.post('/comments/:imdb_id', (req, res, next) => {
 
       if(items.length >= 1) {
       } else {
-        collection.insertOne(myobj);
+        collection.insertOne(myobj2);
       }
       client.close();
     });
@@ -169,22 +190,22 @@ router.post('/comments/:imdb_id', (req, res, next) => {
     movieid: id
   };
 
-  mongoClient.connect(url, { useNewUrlParser: true , useUnifiedTopology: true}, function(err, client) {
-    if (err) throw err;
+  // mongoClient.connect(url, { useNewUrlParser: true , useUnifiedTopology: true}, function(err, client) {
+  //   if (err) throw err;
     
-    const collection = client.db("movie-review").collection("comments");
-    collection.find(query).toArray((err, items) => {
-      if(err) throw err;
-      res.render('comments', {
-        items: items,
-        title:"express",
-        imdb_id: id,
-        username: username
-      });
-      client.close();
-    });
+  //   const collection = client.db("movie-review").collection("comments");
+  //   collection.find(query).toArray((err, items) => {
+  //     if(err) throw err;
+  //     res.render('comments', {
+  //       items: items,
+  //       title:"express",
+  //       imdb_id: id,
+  //       username: username
+  //     });
+  //     client.close();
+  //   });
     
-  });
+  // });
 
   console.log(req.params.imdb_id);
   // comments/${movie.imdb_id}
