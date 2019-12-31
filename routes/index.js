@@ -156,7 +156,7 @@ router.post('/comments/:imdb_id', (req, res, next) => {
   var timestamps = d.getTime();
 
   var datestr = String(date) + '/' + String(month) + '/' + String(year);
-  var timestr = String(hour) + " : " + String(minute);
+  var timestr = String(hour) + ":" + String(minute);
  
   var myobj2 = {
     movieid: id,
