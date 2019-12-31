@@ -185,6 +185,11 @@ router.post('/comments/:imdb_id', (req, res, next) => {
     });
     
   });
+
+  console.log(req.params.imdb_id);
+  // comments/${movie.imdb_id}
+  res.redirect('/comments/' + String(req.params.imdb_id))
+  // res.redirect('/comments/{req.params.imdb_id}')
   // for(var i = 0; i < result.d.length; i++) {
   //   console.log(i + "thlelement is " + result.d[i].comment);
   // }
