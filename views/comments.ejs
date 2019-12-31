@@ -62,7 +62,7 @@
             <% for(var i=0; i<items.length; i++) {%>     
                 <strong class="pull-left primary-font"><%= items[i].username%></strong>
                 <small class="pull-right text-muted">
-                   <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
+                   <span class="glyphicon glyphicon-time"></span> <%= items[i].currentTime %> <%= items[i].currentDate%>  </small>
                 </br>
                 <li class="ui-state-default"><%- items[i].comment%></li>
                 </br>
